@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <string name="app_name">星点战</string>
+    <string name="cur_star">当前拥有星点</string>
+
+</resources>

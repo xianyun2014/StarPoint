@@ -1,0 +1,30 @@
+package com.example.game;
+
+import android.os.Handler;
+
+public class ThreadUpdata extends Thread {
+	private static Handler mhandler;
+	private static SceneData sd;
+	public ThreadUpdata(Handler mHandler, SceneData scenedata)
+	{
+		mhandler = mHandler;
+		sd = scenedata;
+	}
+	@Override
+	public void run()
+	{
+		int n = 0;
+		while (true)
+		{
+			try {
+				Thread.sleep(100);
+			} catch (Exception e) { }
+			if (++n >= 10)
+			{
+				sd.updata();
+				n = 0;
+			}
+			mhandler.sendMessage(mhandler.obtainMessage(0,""));
+		}
+	}
+}

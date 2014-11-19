@@ -1,0 +1,29 @@
+package com.example.game;
+
+import android.util.Log;
+
+public class SceneData {
+	private static SceneData sd = null;
+	MainActivity act;
+	private long star;
+	private SceneData(){ } //can't default create
+	public static SceneData CreateData(MainActivity activity)
+	{
+		if (null == sd)
+		{
+			SceneData sd = new SceneData();
+			sd.star = 0L;
+		}
+		if (sd == null)
+			Log.e("game", "create sd null");
+		return sd;
+	}
+	public long getStarStr()
+	{
+		return star;
+	}
+	public void addStar(long val)
+	{
+		star += val;
+	}
+}

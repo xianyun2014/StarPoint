@@ -1,0 +1,31 @@
+package com.example.game;
+
+import android.widget.TextView;
+import android.app.Activity;
+
+public class ThreadUpdata extends Thread {
+	
+	private TextView txtStar;
+	private SceneData sd;
+	private MainActivity act;
+	
+	public ThreadUpdata(MainActivity activity, SceneData scenedata)
+	{
+		act = activity;
+		sd = scenedata;
+		txtStar = (TextView) act.findViewById(R.id.txtStar);
+		this.start();
+	}
+	public void run()
+	{
+		updata();
+		try {
+			sleep(1000);
+		} catch (InterruptedException e) {
+		}
+	}
+	private void updata()
+	{
+	    txtStar.setText(sd.getStarStr());
+	}
+}

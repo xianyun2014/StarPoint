@@ -1,0 +1,15 @@
+package com.example.game;
+
+import junit.framework.TestCase;
+
+public class test111 extends TestCase {
+	BuildUpdataView s =	BuildUpdataView.CreateView(null);
+	protected void setUp() throws Exception
+	{
+		super.setUp();
+	}
+	public void testStrPreOper()
+	{
+		assertTrue(s.StrPreOper("1236788") == "123");
+	}
+}

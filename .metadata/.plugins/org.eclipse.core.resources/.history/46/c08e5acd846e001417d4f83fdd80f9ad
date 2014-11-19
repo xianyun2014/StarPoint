@@ -1,0 +1,97 @@
+package com.example.game;
+
+public class GameData {
+	private static GameData sd = null; //single 
+
+	public enum building{MZ, XXDF, MFW}; //building's name, cann't change this sequence
+	
+	private long star; //star point number
+	private long yield_sec;
+	private long yield_click;
+	private String[] build_name;
+	private long [] build_cur_level;
+	private long [] build_sec_yield; //different building's yield every second
+	private long [] build_total_yield; //total yield this building
+	private long [] build_multiple;
+	private long [] build_updata_cost;
+	private long [] build_next_add;
+	
+	private GameData(){ } //can't default create
+	
+	public static GameData CreateData()
+	{
+		if (null == sd)
+		{
+			sd = new GameData();
+			sd.star = 0L;
+			sd.yield_sec = 1L;
+			sd.yield_click = 1L;
+			sd.build_cur_level = new long[9];
+			sd.build_sec_yield = new long[9];
+			sd.build_total_yield = new long[9];
+			sd.build_multiple = new long[9];
+			sd.build_updata_cost = new long[9];
+			sd.build_next_add = new long[9];
+		}
+		return sd;
+	}
+	public String get_Star_Str()
+	{
+		return String.valueOf(star);
+	}
+	public void add_second()
+	{
+		star += yield_sec;
+	}
+	public void add_click()
+	{
+		star += yield_click;
+	}
+	public String get_build_name(building b)
+	{
+		return build_name[b.ordinal()];
+	}
+	public String get_build_level(building b)
+	{
+		return String.valueOf(build_cur_level[b.ordinal()]);
+	}
+	public String get_yield_sec(building b)
+	{
+		return String.valueOf(build_sec_yield[b.ordinal()]);
+	}
+	public String get_yield_total(building b)
+	{
+		return String.valueOf(build_total_yield[b.ordinal()]);
+	}
+	public long get_build_multiple(building b)
+	{
+		return build_multiple[b.ordinal()];
+	}
+	public String get_build_updata_cost(building b)
+	{
+		return String.valueOf(build_updata_cost[b.ordinal()]);
+	}
+	public boolean build_can_updata(building b)
+	{
+		return star >= build_updata_cost[b.ordinal()];
+	}
+	public void build_updata(building b)
+	{
+		if (star >= build_updata_cost[b.ordinal()])
+		{
+			star -= build_updata_cost[b.ordinal()];
+			build_cur_level[b.ordinal()]++;
+			
+			if (building.MZ == b)
+			{
+				yield_click += build_next_add[b.ordinal()];
+				//next level data 
+			}
+			else
+			{
+				yield_sec += build_next_add[b.ordinal()];
+				//next level data 
+			}
+		}
+	}
+}

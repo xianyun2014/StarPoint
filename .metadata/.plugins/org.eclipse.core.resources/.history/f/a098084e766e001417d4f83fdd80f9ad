@@ -1,0 +1,55 @@
+package com.example.game;
+
+import com.example.game.BuildInfoView.build;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.widget.ImageView;
+
+public class BuildView extends ImageView{
+	private SceneData sd;
+	private BuildInfoView v;
+    public BuildView(Context context, AttributeSet attrs) {
+        super(context, attrs, 0);
+        sd = SceneData.CreateData();
+    }
+
+	@SuppressLint({ "NewApi", "ClickableViewAccessibility" }) @Override
+	public boolean onTouchEvent(MotionEvent e)
+	{
+		switch (e.getAction())
+		{
+		case MotionEvent.ACTION_DOWN:
+			setX(getX() + 5);
+			setY(getY() + 5);
+			break;
+		case MotionEvent.ACTION_UP:
+			setX(getX() - 5);
+			setY(getY() - 5);
+			break;
+		}
+		if (e.getAction() == MotionEvent.ACTION_UP)
+		{
+			if (null == v)  
+				v = BuildInfoView.CreateView(null);
+			
+			switch (this.getId())
+			{
+			case R.id.imgStar:
+				sd.add_click();
+				break;
+			case R.id.jz_mz:
+				v.setBuild(BuildInfoView.build.MZ);
+				break;
+			case R.id.jz_xxdf:
+				v.setBuild(BuildInfoView.build.XXDF);
+				break;
+			}
+		}
+		return true;
+	}
+	
+}

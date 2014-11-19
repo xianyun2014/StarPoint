@@ -1,0 +1,7 @@
+package com.example.game;
+
+import junit.framework.TestCase;
+
+public class test111 extends TestCase {
+
+}

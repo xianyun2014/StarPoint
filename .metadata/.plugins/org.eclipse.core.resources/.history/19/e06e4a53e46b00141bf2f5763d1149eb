@@ -1,0 +1,20 @@
+package com.example.game;
+
+public class SceneData {
+	private long star;
+	private SceneData(){ } //can't default create
+	public static SceneData CreateData()
+	{
+		SceneData t = new SceneData();
+		t.star = 0L;
+		return t;
+	}
+	public String getStarStr()
+	{
+		return String.valueOf(star);
+	}
+	public void addStar(long val)
+	{
+		star += val;
+	}
+}

@@ -1,0 +1,34 @@
+package com.example.game;
+
+import android.os.Handler;
+
+public class ThreadUpdata extends Thread {
+	
+	private static SceneData sd;
+	private static MainActivity act;
+	private static Handler mhandler;
+	public ThreadUpdata(MainActivity activity, Handler mHandler)
+	{
+		sd = SceneData.CreateData(act);
+		act = activity;
+		mhandler = mHandler;
+	}
+	@SuppressWarnings("static-access")
+	public void run()
+	{
+		while (true)
+		{
+			try {
+				updatasd();
+				mhandler.sendMessage(mhandler.obtainMessage(0, this.));
+				Thread.currentThread().sleep(1000);
+			} catch (Exception e) {
+				
+			}
+		}
+	}
+	public void updatasd()
+	{
+		sd.addStar(1);
+	}
+}

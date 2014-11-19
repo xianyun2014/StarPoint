@@ -1,0 +1,93 @@
+package com.example.game;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+
+public class BuildButtonView extends ImageButton{
+	private GameData sd;
+	private BuildUpdataView v;
+    public BuildButtonView(Context context, AttributeSet attrs) {
+        super(context, attrs, 0);
+        sd = GameData.CreateData();
+    }
+
+    
+	@SuppressLint({ "NewApi", "ClickableViewAccessibility" }) @Override
+	public boolean onTouchEvent(MotionEvent e)
+	{
+		switch (e.getAction()) //flash on click
+		{
+		case MotionEvent.ACTION_DOWN:
+			setX(getX() + 5);
+			setY(getY() + 5);
+			Log.e("game", "btn down");
+			break;
+		case MotionEvent.ACTION_UP:
+			setX(getX() - 5);
+			setY(getY() - 5);
+			Log.e("game", "btn up");
+			break;
+		case MotionEvent.ACTION_CANCEL:
+			Log.e("game", "btn cancel");
+			break;
+		default:
+			Log.e("game", "btn event" + e.getAction());
+		}
+		
+		if (isFocused() && e.getAction() == MotionEvent.ACTION_UP) //dispatch different operate
+		{
+			if (null == v)
+				v = BuildUpdataView.CreateView(null);
+			
+			switch (this.getId())
+			{
+			case R.id.imgStar:
+				sd.add_click();
+				break;
+			case R.id.jz_mz:
+				v.setBuild(GameData.building.MZ);
+				break;
+			case R.id.jz_xxdf:
+				v.setBuild(GameData.building.XXDF);
+				break;
+			case R.id.jz_mfw:
+				v.setBuild(GameData.building.MFW);
+				break;
+			case R.id.jz_xxmgc:
+				v.setBuild(GameData.building.XXMGC);
+				break;
+			case R.id.jz_xkdp:
+				v.setBuild(GameData.building.XKDP);
+				break;
+			case R.id.jz_zxgd:
+				v.setBuild(GameData.building.ZXGD);
+				break;
+			case R.id.jz_ylyqq:
+				v.setBuild(GameData.building.MOON);
+				break;
+			case R.id.jz_xkzm:
+				v.setBuild(GameData.building.XKZM);
+				break;
+			case R.id.zj_sksd:
+				v.setBuild(GameData.building.SKSD);
+				break;
+			case R.id.jz_wmyt:
+				v.setBuild(GameData.building.WMYT);
+				break;
+			case R.id.close:
+				v.hide();
+				break;
+			case R.id.updata:
+				sd.build_updata(v.cur_select);
+				break;
+			}
+		}
+		return true;
+	}
+	
+}

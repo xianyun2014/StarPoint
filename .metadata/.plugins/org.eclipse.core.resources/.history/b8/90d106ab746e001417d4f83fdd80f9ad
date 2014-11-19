@@ -1,0 +1,46 @@
+package com.example.game;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.widget.ImageView;
+
+public class BuildView extends ImageView{
+	private SceneData sd;
+	private BuildInfoView view;
+    public BuildView(Context context, AttributeSet attrs) {
+        super(context, attrs, 0);
+        sd = SceneData.CreateData();
+        view = BuildInfoView.CreateView(null);
+    }
+
+	@SuppressLint({ "NewApi", "ClickableViewAccessibility" }) @Override
+	public boolean onTouchEvent(MotionEvent e)
+	{
+		switch (e.getAction())
+		{
+		case MotionEvent.ACTION_DOWN:
+			setX(getX() + 5);
+			setY(getY() + 5);
+			break;
+		case MotionEvent.ACTION_UP:
+			setX(getX() - 5);
+			setY(getY() - 5);
+			break;
+		}
+		if (e.getAction() == MotionEvent.ACTION_UP)
+		{
+			switch (this.getId())
+			{
+			case R.id.imgStar:
+				sd.add_click();
+				break;
+			case R.id.jz_mz:
+				
+			}
+		}
+		return true;
+	}
+	
+}

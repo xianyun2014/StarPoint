@@ -1,0 +1,26 @@
+package com.example.game;
+
+public class ThreadUpdata extends Thread {
+	
+	private static SceneData sd;
+	private static MainActivity act;
+	public ThreadUpdata(MainActivity activity, SceneData scenedata)
+	{
+		sd = scenedata;
+		act = activity;
+		this.start();
+	}
+	public void run()
+	{
+		updata();
+		act.UIupdata();
+		try {
+			sleep(1000);
+		} catch (InterruptedException e) {
+		}
+	}
+	public void updata()
+	{
+		sd.addStar(1);
+	}
+}

@@ -1,0 +1,50 @@
+package com.example.game;
+
+import android.util.Log;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+public class UpdataView {
+	private static BuildUpdataView v = null;
+	private GameData sd;
+	private RelativeLayout view_layout;
+	private TextView title;
+	private TextView cur_level;
+	private TextView yield_sec;
+	private TextView yield_total;
+	private TextView next_add;
+	private TextView build_info;
+	private TextView cost_updata;
+
+	public enum build{MZ, XXDF, MFW};
+	
+	private UpdataView(View view)
+	{
+		sd = GameData.CreateData();
+		view_layout = (RelativeLayout) view.findViewById(R.id.build_info);
+		
+		title = (TextView) view.findViewById(R.id.build_title);
+		cur_level = (TextView) view.findViewById(R.id.txt_Level);
+		yield_sec = (TextView) view.findViewById(R.id.txt_yield_sec);
+		yield_total = (TextView) view.findViewById(R.id.txt_yield_total);
+		next_add = (TextView) view.findViewById(R.id.txt_next_add);
+		build_info = (TextView) view.findViewById(R.id.txt_info);
+		cost_updata = (TextView) view.findViewById(R.id.txt_cost);
+		
+        view_layout.setVisibility(4); //вўВи
+	}
+	public static BuildUpdataView CreateView(View view)
+	{
+		if (null == v && null != view)
+		{
+			v = new BuildUpdataView(view);
+			Log.e("game", "info create");
+		}
+		return v;
+	}
+	public void setBuild(build b)
+	{
+		view_layout.setVisibility(0);//show
+	}
+}
