@@ -1,70 +1,55 @@
 package com.example.game;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Fragment;
-import android.content.Context;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 public class MainActivity extends Activity{
-	private TextView txtStar;
 	private GameData sd;
-	private BuildUpdataView updataview;
+	private ViewStar_Frame view_star;
+	private ControlThread ctrl_thread = null;
 	
-    protected void onCreate(Bundle savedInstanceState) {
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.main_frame);
+        setContentView(R.layout.main_activity);
         
-        ///寻找另一个xml中的view
-        LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
-        View rootview = (View) root.getChildAt(0);
-
-        View bv = inflater.inflate(R.layout.activity_main, root);
-        LinearLayout.LayoutParams lp = (LayoutParams) bv.getLayoutParams();
+        View v = (View) findViewById(R.id.layout_game_star);
+        view_star = ViewStar_Frame.GetView(v);
         
-        lp.height = (int) (getWindowManager().getDefaultDisplay().getHeight() * 0.9);
-        lp.bottomMargin = (int) (getWindowManager().getDefaultDisplay().getHeight() * 0.1);
-        bv.setLayoutParams(lp);
-        FrameLayout mf = (FrameLayout) findViewById(R.id.context_frame);
-        txtStar = (TextView) bv.findViewById(R.id.txtStar);
-
-        View view = inflater.inflate(R.layout.build_info_view, root);
-        updataview = BuildUpdataView.CreateView(view);
         sd = GameData.CreateData();
-        new ControlThread(mHandler, sd).start();
-        
+        ctrl_thread = new ControlThread(mHandler, sd);
+        ctrl_thread.start();
     }
-    
-    @SuppressLint("HandlerLeak") 
-    protected Handler mHandler = new Handler(){  /*Update UI message*/
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK)
+		{
+			this.moveTaskToBack(false);
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
+	protected Handler mHandler = new Handler(){  /*Update UI message*/
     	@Override
     	public void handleMessage(Message msg){
     		UIupdata();
     	}
     };
     
-    @SuppressLint("NewApi")
     public void UIupdata()
 	{
-    	txtStar.setText(sd.StrPreOper(sd.get_Star_Str()));
-    	updataview.UIupdata(updataview.cur_select);
+    	view_star.UIupdata();
 	}
     
 }

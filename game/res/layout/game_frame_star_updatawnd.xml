@@ -1,0 +1,172 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android1="http://schemas.android.com/apk/res/android"
+    android1:id="@+id/build_updata_info"
+    android1:layout_width="wrap_content"
+    android1:layout_height="280dp"
+    android1:layout_alignParentLeft="true"
+    android1:layout_alignParentRight="true"
+    android1:layout_alignParentTop="true"
+    android1:layout_marginLeft="10dp"
+    android1:layout_marginRight="10dp"
+    android1:layout_marginTop="60dp"
+    android1:gravity="right" >
+
+    <ImageView
+        android1:id="@+id/jz_xxmgc"
+        android1:layout_width="fill_parent"
+        android1:layout_height="fill_parent"
+        android1:layout_alignParentBottom="true"
+        android1:layout_alignParentLeft="true"
+        android1:layout_alignParentTop="true"
+        android1:scaleType="fitXY"
+        android1:src="@drawable/info_build" />
+
+    <TableLayout
+        android1:id="@+id/TableLayout1"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignLeft="@+id/build_name"
+        android1:layout_below="@+id/build_name"
+        android1:layout_marginLeft="20dp"
+        android1:layout_marginTop="30dp" >
+
+        <TableRow
+            android1:id="@+id/tableRow1"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content" >
+
+            <TextView
+                android1:id="@+id/textView1"
+                android1:layout_width="wrap_content"
+                android1:layout_height="wrap_content"
+                android1:text="当前秒获：" />
+
+            <TextView
+                android1:id="@+id/txt_yield_sec"
+                android1:layout_width="wrap_content"
+                android1:layout_height="wrap_content"
+                android1:text="0" />
+        </TableRow>
+
+        <TableRow
+            android1:id="@+id/tableRow2"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content" >
+
+            <TextView
+                android1:id="@+id/txt_cur_star"
+                android1:layout_width="wrap_content"
+                android1:layout_height="wrap_content"
+                android1:text="此物总获：" />
+
+            <TextView
+                android1:id="@+id/txt_yield_total"
+                android1:layout_width="wrap_content"
+                android1:layout_height="wrap_content"
+                android1:text="0" />
+        </TableRow>
+
+        <TableRow
+            android1:id="@+id/tableRow3"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content" >
+
+            <TextView
+                android1:id="@+id/txt_sec_star"
+                android1:layout_width="wrap_content"
+                android1:layout_height="wrap_content"
+                android1:text="下级增产：" />
+
+            <TextView
+                android1:id="@+id/txt_next_add"
+                android1:layout_width="wrap_content"
+                android1:layout_height="wrap_content"
+                android1:text="0" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android1:id="@+id/textView2"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignLeft="@+id/build_name"
+        android1:layout_below="@+id/build_name"
+        android1:layout_marginLeft="10dp"
+        android1:layout_marginTop="8dp"
+        android1:text="当前等级："
+        android1:textStyle="bold" />
+
+    <TextView
+        android1:id="@+id/txt_info"
+        android1:layout_width="200dp"
+        android1:layout_height="wrap_content"
+        android1:layout_below="@+id/TableLayout1"
+        android1:layout_centerHorizontal="true"
+        android1:layout_marginTop="5dp"
+        android1:maxWidth="200dp"
+        android1:text="说明" />
+
+    <ImageView
+        android1:id="@+id/jz_zxgd"
+        android1:layout_width="60dp"
+        android1:layout_height="60dp"
+        android1:layout_alignRight="@+id/jz_xxmgc"
+        android1:layout_alignTop="@+id/jz_xxmgc"
+        android1:layout_marginRight="56dp"
+        android1:layout_marginTop="9dp"
+        android1:scaleType="fitXY"
+        android1:src="@drawable/jz_xzdf" />
+
+    <TextView
+        android1:id="@+id/txt_cost"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_below="@+id/txt_info"
+        android1:layout_centerHorizontal="true"
+        android1:layout_marginTop="10dp"
+        android1:text="升级花费：" />
+
+    <com.example.game.XYButtonView
+        android1:id="@+id/close"
+        android1:layout_width="60dp"
+        android1:layout_height="60dp"
+        android1:layout_alignRight="@+id/jz_xxmgc"
+        android1:layout_alignBottom="@+id/jz_xxmgc"
+        android1:layout_marginRight="30dp"
+        android1:layout_marginBottom="20dp"
+        android1:scaleType="fitXY"
+        android1:src="@drawable/close" />
+
+    <com.example.game.XYButtonView
+        android1:id="@+id/updata"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_below="@+id/txt_cost"
+        android1:layout_centerHorizontal="true"
+        android1:scaleType="fitXY"
+        android1:src="@drawable/updata" />
+
+    <TextView
+        android1:id="@+id/build_name"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignParentLeft="true"
+        android1:layout_alignParentTop="true"
+        android1:layout_below="@layout/game_frame_star_updatawnd"
+        android1:layout_marginLeft="34dp"
+        android1:layout_marginTop="22dp"
+        android1:text="title"
+        android1:textStyle="bold"
+        android1:typeface="monospace" />
+
+    <TextView
+        android1:id="@+id/txt_Level"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignBaseline="@+id/textView2"
+        android1:layout_alignBottom="@+id/textView2"
+        android1:layout_toRightOf="@+id/textView2"
+        android1:text="0"
+        android1:textStyle="bold" />
+
+</RelativeLayout>

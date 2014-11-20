@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.game.SlidingLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentRight="true" >
+    
+    <include
+        android:id="@+id/layout_game_star_count"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_weight="10"
+        layout="@layout/game_frame_star_count" />
+    
+    <include
+        android:id="@+id/layout_game_star"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_weight="10"
+        layout="@layout/game_frame_star" />
+
+    <RelativeLayout
+        android:layout_width="120dp"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="0dp"
+        android:background="#ff000000" >
+
+        <com.example.game.XYButtonView
+            android:id="@+id/buildButtonView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/jz_zxgd" />
+
+        <com.example.game.XYButtonView
+            android:id="@+id/buildButtonView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/buildButtonView2"
+            android:src="@drawable/jz_xkzm" />
+
+        <com.example.game.XYButtonView
+            android:id="@+id/buildButtonView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/jz_xxmgc" />
+
+    </RelativeLayout>
+
+    
+
+</com.example.game.SlidingLayout>
