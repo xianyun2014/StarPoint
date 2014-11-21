@@ -5,8 +5,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class ViewStar_Updata{
-	
 	private static ViewStar_Updata v = null;
+	private boolean is_show;
 	
 	private RelativeLayout view_layout;
 	private TextView txt_title;
@@ -17,7 +17,7 @@ public class ViewStar_Updata{
 	private TextView txt_build_info;
 	private TextView txt_cost_updata;
 	
-	public GameData.building cur_select = GameData.building.MZ;
+	private GameData.building cur_select = GameData.building.MZ;
 	
 	private ViewStar_Updata(View view)
 	{
@@ -30,6 +30,7 @@ public class ViewStar_Updata{
 		txt_build_info = (TextView) view.findViewById(R.id.txt_info);
 		txt_cost_updata = (TextView) view.findViewById(R.id.up_txt_cost);
 		view_layout.setVisibility(View.GONE); //Òþ²Ø
+		is_show = false;
 	}
 	public static ViewStar_Updata GetView(View view)
 	{
@@ -45,6 +46,7 @@ public class ViewStar_Updata{
 		UIupdata(b);
 		view_layout.setVisibility(View.VISIBLE);//show
 		cur_select = b;
+		is_show = true;
 	}
 	
 	public void UIupdata(GameData.building b)
@@ -57,8 +59,17 @@ public class ViewStar_Updata{
 		txt_next_add.setText(GameData.GetData().get_build_next_add(b));
 		txt_cost_updata.setText("Éý¼¶»¨·Ñ:" + GameData.GetData().get_build_updata_cost(b));
 	}
+	public GameData.building getCurrentSelect()
+	{
+		return cur_select;
+	}
+	public boolean isShow()
+	{
+		return is_show;
+	}
 	public void hide()
 	{
 		view_layout.setVisibility(View.GONE);
+		is_show = false;
 	}
 }

@@ -7,6 +7,8 @@ import java.io.ObjectOutputStream;
 import android.util.Log;
 
 public class GameData implements java.io.Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	private static GameData gd = null; //single 
 
 	public enum building{MZ, XXDF, MFW, XXMGC, ZXGD, XKDP, MOON, XKZM, SKSD, WMYT}; //building's name, cann't change this sequence
@@ -18,7 +20,6 @@ public class GameData implements java.io.Serializable{
 	private long star_history_total; //历史总产
 	private long yield_sec; //当前秒产
 	private long yield_multiple; //总产量倍率
-	private long time_offset;  //毫秒修正辅助
 	private long click_num; //总点击次数
 	private long click_yield;  //单次点击产量
 	private long click_total_yield; //点击总产量
@@ -40,7 +41,6 @@ public class GameData implements java.io.Serializable{
 		star = 0L;
 		star_history_max = 0L;
 		star_history_total = 0L;
-		time_offset = 0;
 		yield_sec = 1L;
 		yield_multiple = 1L;
 		click_num = 0L;
@@ -103,10 +103,7 @@ public class GameData implements java.io.Serializable{
 			return false;
 		}
 	}
-	public void add_star_for_fps(int m) //每m毫秒增加的产量（此方法并不记入星点，只为适应刷频速率）
-	{
-		time_offset += yield_sec / (1000 / m) * yield_multiple;
-	}
+
 	public void add_star() //实际的增加一秒产量的方法
 	{
 		star += yield_sec * yield_multiple;
@@ -117,8 +114,6 @@ public class GameData implements java.io.Serializable{
 		{
 			build_total_yield[i] += build_sec_yield[i] * build_multiple[i];
 		}
-		 
-		time_offset = 0;
 	}
 	public void add_click()
 	{
@@ -136,7 +131,7 @@ public class GameData implements java.io.Serializable{
 	}
 	public String get_star()
 	{
-		return StrPreOper(String.valueOf(star + time_offset));
+		return StrPreOper(String.valueOf(star));
 	}
 	public String get_star_sec()
 	{
@@ -144,11 +139,11 @@ public class GameData implements java.io.Serializable{
 	}
 	public String get_star_history_total()
 	{
-		return StrPreOper(String.valueOf(star_history_total + time_offset));
+		return StrPreOper(String.valueOf(star_history_total));
 	}
 	public String get_star_history_max()
 	{
-		return StrPreOper(String.valueOf(star_history_max + time_offset));
+		return StrPreOper(String.valueOf(star_history_max));
 	}
 	public String get_updata_num()
 	{

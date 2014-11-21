@@ -4,17 +4,15 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 public class MainActivity extends Activity{
-	private ViewStar_Frame view_star;
-	private ViewStar_Count view_count;
-	
+	private ViewControl ctrl_view = null;
 	private ControlThread ctrl_thread = null;
+	
+	private boolean in_front; //is show
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +21,7 @@ public class MainActivity extends Activity{
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main_activity);
         
-        View vg = (View) findViewById(R.id.layout_game_star);
-        view_star = ViewStar_Frame.GetView(vg);
-        View vc = (View) findViewById(R.id.layout_game_star_count);
-        view_count = ViewStar_Count.Get_View(vc);
+        ctrl_view = new ViewControl(findViewById(R.id.main_game_layout));
         
         try{
         	GameData.readData(openFileInput("sava.sv"));
@@ -36,19 +31,20 @@ public class MainActivity extends Activity{
     }
 
 	@Override
+	protected void onStart() {
+		in_front = true;
+		super.onRestart();
+	}
+
+	@Override
 	protected void onPause() {
 		try{
 			GameData.saveData(openFileOutput("sava.sv", MODE_PRIVATE));
 		}catch (Exception e){ }
-		Log.e("game", "onPause");
+		in_front = false;
 		super.onPause();
 	}
-	@Override
-	protected void onStop() {
-		Log.e("game", "onStop");
-		super.onStop();
-	}
-
+	
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK)
@@ -68,8 +64,9 @@ public class MainActivity extends Activity{
     
     public void UIupdata()
 	{
-    	view_star.UIupdata();
-    	view_count.UIupdata();
+    	if (in_front){
+    		ctrl_view.UIupdata();
+    	}
 	}
     
 }

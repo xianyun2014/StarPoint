@@ -4,7 +4,7 @@
  * @qq:      836663997
  * @blog:    blog.csdn.net/xianyun2009
  * @create:  2014-11-21
- * @参考                       郭霖csdn专栏
+ * @参考                 郭霖csdn专栏
  */
 
 package com.example.game;
@@ -30,7 +30,7 @@ public class SlidingLayout extends RelativeLayout {
     //状态标记
     private int STATE;
     //当前显示状况
-    private boolean isLeftShow = false, isRightShow = false, isContentShow = true;
+    private boolean isLeftShow = false, isRightShow = false, isContentShow = true, isSliding = false;
     
     private float x_down, x_move, x_up;
     
@@ -39,6 +39,7 @@ public class SlidingLayout extends RelativeLayout {
     //翻页的最小速度
     private final int VELOCITY_MIN = 200;
     
+	@SuppressWarnings("deprecation")
 	public SlidingLayout(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -66,6 +67,27 @@ public class SlidingLayout extends RelativeLayout {
             rightLayout.setLayoutParams(rightLayoutParams);
         }
     }
+	public boolean isShowLeft()
+	{
+		return isLeftShow;
+	}
+	public boolean isShowRight()
+	{
+		return isRightShow;
+	}
+	public boolean isShowContent()
+	{
+		return isContentShow;
+	}
+	
+	public boolean isSlidingToLeft()
+	{
+		return isSliding && SHOW_LEFT == getState((int)(x_move - x_down));
+	}
+	public boolean isSlidingToRight()
+	{
+		return isSliding && SHOW_RIGHT == getState((int)(x_move - x_down));
+	}
 	//获得当前状态
 	private int getState(int d)
 	{
@@ -93,6 +115,7 @@ public class SlidingLayout extends RelativeLayout {
 		{
 		case MotionEvent.ACTION_DOWN:
 			x_down = (int)e.getRawX();
+			isSliding = true;
 			break;
 		case MotionEvent.ACTION_MOVE:
 			x_move = (int) e.getRawX();
@@ -145,6 +168,7 @@ public class SlidingLayout extends RelativeLayout {
 				break;
 			}
 			recycleTracker();
+			isSliding = false;
 			break;
 		}
 		return true;
@@ -232,7 +256,15 @@ public class SlidingLayout extends RelativeLayout {
 		}
     	contentLayout.setLayoutParams(contentLayoutParams);
 	}
-	//四种显示状态切换
+	//显示状态切换
+	public void showContent()
+	{
+		new ScrollTaskLeft().execute(-1000);
+		new ScrollTaskRight().execute(-1000);
+		isContentShow = true;
+		isLeftShow = false;
+		isRightShow = false;
+	}
 	public void showLeft()
 	{
 		new ScrollTaskLeft().execute(30);

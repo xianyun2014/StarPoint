@@ -12,21 +12,12 @@ public class ControlThread extends Thread {
 	@Override
 	public void run()
 	{
-		int n = 0;
 		while (true)
 		{
 			try {
-				Thread.sleep(200);
-			} catch (Exception e) { }
-			if (++n >= 5)
-			{
+				Thread.sleep(1000);
 				GameData.GetData().add_star();
-				n = 0;
-			}
-			else
-			{
-				GameData.GetData().add_star_for_fps(200);
-			}
+			} catch (Exception e) { }
 			mhandler.sendMessage(mhandler.obtainMessage(0,""));
 		}
 	}

@@ -73,7 +73,7 @@ public class XYButtonView extends ImageButton{
 				v.hide();
 				break;
 			case R.id.up_updata:
-				GameData.GetData().build_updata(v.cur_select);
+				GameData.GetData().build_updata(v.getCurrentSelect());
 				break;
 			}
 		}
