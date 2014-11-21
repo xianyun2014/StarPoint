@@ -1,20 +1,13 @@
 package com.example.game;
 
 import android.os.Handler;
-import android.text.format.Time;
-import android.util.Log;
 
 public class ControlThread extends Thread {
 	private static Handler mhandler;
-	private static GameData sd;
 	
-	private Time tm = null;
-	
-	
-	public ControlThread(Handler mHandler, GameData scenedata)
+	public ControlThread(Handler mHandler)
 	{
 		mhandler = mHandler;
-		sd = scenedata;
 	}
 	@Override
 	public void run()
@@ -27,12 +20,12 @@ public class ControlThread extends Thread {
 			} catch (Exception e) { }
 			if (++n >= 5)
 			{
-				sd.add_onesecond();
+				GameData.GetData().add_star();
 				n = 0;
 			}
 			else
 			{
-				sd.add_second(200);
+				GameData.GetData().add_star_for_fps(200);
 			}
 			mhandler.sendMessage(mhandler.obtainMessage(0,""));
 		}

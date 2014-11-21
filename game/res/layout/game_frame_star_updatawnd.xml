@@ -42,7 +42,7 @@
                 android1:text="当前秒获：" />
 
             <TextView
-                android1:id="@+id/txt_yield_sec"
+                android1:id="@+id/up_txt_yield_sec"
                 android1:layout_width="wrap_content"
                 android1:layout_height="wrap_content"
                 android1:text="0" />
@@ -60,7 +60,7 @@
                 android1:text="此物总获：" />
 
             <TextView
-                android1:id="@+id/txt_yield_total"
+                android1:id="@+id/up_txt_yield_total"
                 android1:layout_width="wrap_content"
                 android1:layout_height="wrap_content"
                 android1:text="0" />
@@ -78,7 +78,7 @@
                 android1:text="下级增产：" />
 
             <TextView
-                android1:id="@+id/txt_next_add"
+                android1:id="@+id/up_txt_next_add"
                 android1:layout_width="wrap_content"
                 android1:layout_height="wrap_content"
                 android1:text="0" />
@@ -118,7 +118,7 @@
         android1:src="@drawable/jz_xzdf" />
 
     <TextView
-        android1:id="@+id/txt_cost"
+        android1:id="@+id/up_txt_cost"
         android1:layout_width="wrap_content"
         android1:layout_height="wrap_content"
         android1:layout_below="@+id/txt_info"
@@ -127,21 +127,21 @@
         android1:text="升级花费：" />
 
     <com.example.game.XYButtonView
-        android1:id="@+id/close"
+        android1:id="@+id/up_close"
         android1:layout_width="60dp"
         android1:layout_height="60dp"
-        android1:layout_alignRight="@+id/jz_xxmgc"
         android1:layout_alignBottom="@+id/jz_xxmgc"
-        android1:layout_marginRight="30dp"
+        android1:layout_alignRight="@+id/jz_xxmgc"
         android1:layout_marginBottom="20dp"
+        android1:layout_marginRight="30dp"
         android1:scaleType="fitXY"
         android1:src="@drawable/close" />
 
     <com.example.game.XYButtonView
-        android1:id="@+id/updata"
+        android1:id="@+id/up_updata"
         android1:layout_width="wrap_content"
         android1:layout_height="wrap_content"
-        android1:layout_below="@+id/txt_cost"
+        android1:layout_below="@+id/up_txt_cost"
         android1:layout_centerHorizontal="true"
         android1:scaleType="fitXY"
         android1:src="@drawable/updata" />
@@ -160,7 +160,7 @@
         android1:typeface="monospace" />
 
     <TextView
-        android1:id="@+id/txt_Level"
+        android1:id="@+id/up_txt_Level"
         android1:layout_width="wrap_content"
         android1:layout_height="wrap_content"
         android1:layout_alignBaseline="@+id/textView2"

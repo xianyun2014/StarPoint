@@ -11,8 +11,9 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public class MainActivity extends Activity{
-	private GameData sd;
 	private ViewStar_Frame view_star;
+	private ViewStar_Count view_count;
+	
 	private ControlThread ctrl_thread = null;
 	
 	@Override
@@ -22,13 +23,31 @@ public class MainActivity extends Activity{
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main_activity);
         
-        View v = (View) findViewById(R.id.layout_game_star);
-        view_star = ViewStar_Frame.GetView(v);
+        View vg = (View) findViewById(R.id.layout_game_star);
+        view_star = ViewStar_Frame.GetView(vg);
+        View vc = (View) findViewById(R.id.layout_game_star_count);
+        view_count = ViewStar_Count.Get_View(vc);
         
-        sd = GameData.CreateData();
-        ctrl_thread = new ControlThread(mHandler, sd);
+        try{
+        	GameData.readData(openFileInput("sava.sv"));
+        }catch (Exception e){ }
+        ctrl_thread = new ControlThread(mHandler);
         ctrl_thread.start();
     }
+
+	@Override
+	protected void onPause() {
+		try{
+			GameData.saveData(openFileOutput("sava.sv", MODE_PRIVATE));
+		}catch (Exception e){ }
+		Log.e("game", "onPause");
+		super.onPause();
+	}
+	@Override
+	protected void onStop() {
+		Log.e("game", "onStop");
+		super.onStop();
+	}
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -50,6 +69,7 @@ public class MainActivity extends Activity{
     public void UIupdata()
 	{
     	view_star.UIupdata();
+    	view_count.UIupdata();
 	}
     
 }

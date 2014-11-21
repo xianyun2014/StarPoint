@@ -7,11 +7,9 @@ import android.view.MotionEvent;
 import android.widget.ImageButton;
 
 public class XYButtonView extends ImageButton{
-	private GameData sd;
 	private ViewStar_Updata v;
     public XYButtonView(Context context, AttributeSet attrs) {
         super(context, attrs, 0);
-        sd = GameData.CreateData();
     }
     
 	@SuppressLint({ "NewApi", "ClickableViewAccessibility" }) @Override
@@ -34,12 +32,12 @@ public class XYButtonView extends ImageButton{
 			if (e.getX() < 0 || e.getY() < 0 || e.getX() > getWidth() || e.getY() > getHeight())
 				return true;
 			if (null == v)
-				v = ViewStar_Updata.CreateView(null);
+				v = ViewStar_Updata.GetView(null);
 			
 			switch (this.getId())
 			{
 			case R.id.imgStar:
-				sd.add_click();
+				GameData.GetData().add_click();
 				break;
 			case R.id.jz_mz:
 				v.setBuild(GameData.building.MZ);
@@ -71,11 +69,11 @@ public class XYButtonView extends ImageButton{
 			case R.id.jz_wmyt:
 				v.setBuild(GameData.building.WMYT);
 				break;
-			case R.id.close:
+			case R.id.up_close:
 				v.hide();
 				break;
-			case R.id.updata:
-				sd.build_updata(v.cur_select);
+			case R.id.up_updata:
+				GameData.GetData().build_updata(v.cur_select);
 				break;
 			}
 		}
