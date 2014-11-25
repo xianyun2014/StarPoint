@@ -2,10 +2,10 @@ package com.example.game;
 
 import android.os.Handler;
 
-public class ControlThread extends Thread {
+public class TimeThreadControl extends Thread {
 	private static Handler mhandler;
 	
-	public ControlThread(Handler mHandler)
+	public TimeThreadControl(Handler mHandler)
 	{
 		mhandler = mHandler;
 	}

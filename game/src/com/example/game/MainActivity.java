@@ -10,7 +10,7 @@ import android.view.WindowManager;
 
 public class MainActivity extends Activity{
 	private ViewControl ctrl_view = null;
-	private ControlThread ctrl_thread = null;
+	private TimeThreadControl ctrl_thread = null;
 	
 	private boolean in_front; //is show
 	
@@ -21,13 +21,15 @@ public class MainActivity extends Activity{
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main_activity);
         
-        ctrl_view = new ViewControl(findViewById(R.id.main_game_layout));
-        
+        ctrl_view = ViewControl.GetViewControl(findViewById(R.id.main_game_layout));
         try{
         	GameData.readData(openFileInput("sava.sv"));
-        }catch (Exception e){ }
-        ctrl_thread = new ControlThread(mHandler);
+        }catch (Exception e){
+        	GameData.GetData();
+        }
+        ctrl_thread = new TimeThreadControl(mHandler);
         ctrl_thread.start();
+        ctrl_view.UIALLupdata();
     }
 
 	@Override

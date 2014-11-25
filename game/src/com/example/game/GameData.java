@@ -11,7 +11,8 @@ public class GameData implements java.io.Serializable{
 	
 	private static GameData gd = null; //single 
 
-	public enum building{MZ, XXDF, MFW, XXMGC, ZXGD, XKDP, MOON, XKZM, SKSD, WMYT}; //building's name, cann't change this sequence
+	public enum building{MZ, XXDF, MFW, XXMGC, ZXGD, XKDP,
+		MOON, XKZM, SKSD, WMYT}; //building's name, cann't change this sequence
 	private long game_day;
 	private long game_hour;
 	
@@ -259,5 +260,30 @@ public class GameData implements java.io.Serializable{
 			
 			++updata_num;
 		}
+	}
+	public static long valueOf(String str)
+	{
+		if (str.equals("CUR_STAR"))
+			return gd.star;
+		else if (str.equals("TOTAL_STAR"))
+			return gd.star_history_total;
+		else if (str.equals("SEC_YIELD"))
+			return gd.yield_sec;
+		else if (str.equals("UPDATA_TIMES"))
+			return gd.updata_num;
+		else if (str.equals("CLICK_TIMES"))
+			return gd.click_num;
+		else if (str.equals("CLICK_YIELD"))
+			return gd.click_yield;
+		else if (str.equals("CLICK_TOTALYIELD"))
+			return gd.click_total_yield;
+		else if (str.equals("GAME_DAY"))
+			return gd.game_day;
+		else if (str.equals("GAME_HOUR"))
+			return gd.game_hour;
+		else if (-1 != "MZ, XXDF, MFW, XXMGC, ZXGD, XKDP,MOON, XKZM, SKSD, WMYT".indexOf(str))
+			return gd.build_cur_level[building.valueOf(str).ordinal()];
+		
+		return 0;
 	}
 }

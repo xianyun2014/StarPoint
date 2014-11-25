@@ -43,21 +43,21 @@ public class ViewStar_Updata{
 
 	public void setBuild(GameData.building b)
 	{
-		UIupdata(b);
-		view_layout.setVisibility(View.VISIBLE);//show
 		cur_select = b;
+		UIupdata();
+		view_layout.setVisibility(View.VISIBLE);//show
 		is_show = true;
 	}
 	
-	public void UIupdata(GameData.building b)
+	public void UIupdata()
 	{
-		txt_title.setText(GameData.GetData().get_build_name(b));
-		txt_cur_level.setText(GameData.GetData().get_build_level(b));
-		txt_yield_sec.setText(GameData.GetData().get_build_yield_sec(b));
-		txt_yield_total.setText(GameData.GetData().get_build_yield_total(b));
-		txt_build_info.setText(GameData.GetData().get_build_info(b));
-		txt_next_add.setText(GameData.GetData().get_build_next_add(b));
-		txt_cost_updata.setText("升级花费:" + GameData.GetData().get_build_updata_cost(b));
+		txt_title.setText(GameData.GetData().get_build_name(cur_select));
+		txt_cur_level.setText(GameData.GetData().get_build_level(cur_select));
+		txt_yield_sec.setText(GameData.GetData().get_build_yield_sec(cur_select));
+		txt_yield_total.setText(GameData.GetData().get_build_yield_total(cur_select));
+		txt_build_info.setText(GameData.GetData().get_build_info(cur_select));
+		txt_next_add.setText(GameData.GetData().get_build_next_add(cur_select));
+		txt_cost_updata.setText("升级花费:" + GameData.GetData().get_build_updata_cost(cur_select));
 	}
 	public GameData.building getCurrentSelect()
 	{
