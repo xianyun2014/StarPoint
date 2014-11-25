@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <string name="app_name">game</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="cur_star">当前拥有星点</string>
-
-</resources>

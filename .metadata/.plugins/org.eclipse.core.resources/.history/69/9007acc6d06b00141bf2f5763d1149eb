@@ -1,9 +1,0 @@
-package com.example.game;
-
-public class SceneData {
-	private Long m_star;
-	public SceneData()
-	{
-		m_star = 0L;
-	}
-}

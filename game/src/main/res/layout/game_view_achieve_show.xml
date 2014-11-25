@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_achieve_show"
+    android:layout_width="300dp"
+    android:layout_height="200dp"
+    android:gravity="center_horizontal">
+
+    <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="150dp" android:layout_alignParentLeft="true"
+            android:layout_marginLeft="40dp">
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="false"
+            android:scaleType="fitXY"
+            android:src="@drawable/info_build"/>
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="14dp"
+            android:text="解锁成就" />
+        <TextView
+            android:id="@+id/txt_achieve_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="14dp" android:layout_toRightOf="@+id/textView1"/>
+        <TextView
+            android:id="@+id/txt_achieve_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView1" android:layout_alignLeft="@+id/textView1"
+            android:layout_marginLeft="30dp" android:layout_marginTop="20dp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

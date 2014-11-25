@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/contextLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <ImageView
+        android:id="@+id/imageback"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/back" />
+
+    <com.xianyun.game.XYButtonView
+        android:id="@+id/imgStar"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/star" />
+
+    <TextView
+        android:id="@+id/textcurstar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="@string/cur_star" android:textColor="#ff000000"/>
+
+    <TextView
+        android:id="@+id/txtStar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textcurstar"
+        android:layout_centerHorizontal="true"
+        android:maxLength="1000"
+        android:text="0"
+        android:textColor="#ff00ffff" />
+
+    <com.xianyun.game.XYButtonView
+        android:id="@+id/jz_mz"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="54dp"
+        android:src="@drawable/jz_mz" />
+
+    <com.xianyun.game.XYButtonView
+        android:id="@+id/jz_xxdf"
+        android:layout_width="70dp"
+        android:layout_height="100dp"
+        android:layout_alignBottom="@+id/jz_mz"
+        android:layout_toLeftOf="@+id/textcurstar"
+        android:src="@drawable/jz_xzdf" />
+
+    <com.xianyun.game.XYButtonView
+        android:id="@+id/zj_sksd"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/jz_xkzm"
+        android:layout_alignLeft="@+id/jz_xkdp"
+        android:scaleType="fitXY"
+        android:src="@drawable/jz_sksd" />
+
+    <com.xianyun.game.XYButtonView
+        android:id="@+id/jz_wmyt"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/imgStar"
+        android:layout_alignLeft="@+id/jz_xxmgc"
+        android:layout_marginBottom="18dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/jz_wmyt" />
+
+    <com.xianyun.game.XYButtonView
+        android:id="@+id/jz_xkdp"
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        android:layout_above="@+id/jz_xxdf"
+        android:layout_toLeftOf="@+id/imgStar"
+        android:scaleType="fitXY"
+        android:src="@drawable/jz_dapao" />
+
+    <com.xianyun.game.XYButtonView
+        android:id="@+id/jz_ylyqq"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/jz_mz"
+        android:layout_alignTop="@+id/jz_xkdp"
+        android:layout_marginTop="17dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/jz_moon" />
+
+    <com.xianyun.game.XYButtonView
+        android:id="@+id/jz_xkzm"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/jz_xxdf"
+        android:scaleType="fitXY"
+        android:src="@drawable/jz_xkzm" />
+
+    <com.xianyun.game.XYButtonView
+        android:id="@+id/jz_mfw"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignTop="@+id/jz_mz"
+        android:layout_toRightOf="@+id/imgStar"
+        android:src="@drawable/jz_mfw" />
+
+    <com.xianyun.game.XYButtonView
+        android:id="@+id/jz_xxmgc"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignBottom="@+id/jz_ylyqq"
+        android:layout_toRightOf="@+id/jz_zxgd"
+        android:scaleType="fitXY"
+        android:src="@drawable/jz_xxmgc" />
+
+    <com.xianyun.game.XYButtonView
+        android:id="@+id/jz_zxgd"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_above="@+id/jz_ylyqq"
+        android:layout_toRightOf="@+id/textcurstar"
+        android:scaleType="fitXY"
+        android:src="@drawable/jz_zxgd" />
+
+    <include
+        android:id="@+id/view_build_updata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@layout/game_frame_star"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@layout/game_frame_star"
+        android:layout_alignTop="@layout/game_frame_star"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="50dp"
+        layout="@layout/game_frame_star_updatawnd"
+        android:visibility="invisible" />
+
+</RelativeLayout>
+
+
+
+
+

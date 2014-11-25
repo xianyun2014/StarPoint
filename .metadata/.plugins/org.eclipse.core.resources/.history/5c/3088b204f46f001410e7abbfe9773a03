@@ -1,7 +1,0 @@
-package com.example.game;
-
-import android.widget.RelativeLayout;
-
-public class SlidingLayout extends RelativeLayout {
-
-}
