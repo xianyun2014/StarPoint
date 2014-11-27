@@ -1,6 +1,10 @@
 package com.xianyun.game;
 
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
 
 public class ViewAchieve_Show {
@@ -29,5 +33,38 @@ public class ViewAchieve_Show {
         txt_achieve_name.setText(name);
         txt_achieve_info.setText(info);
         view.setVisibility(View.VISIBLE);
+
+        AnimationSet animation = new AnimationSet(true);
+        AlphaAnimation alpha = new AlphaAnimation(1, 0);
+        TranslateAnimation translate = new TranslateAnimation(
+                Animation.RELATIVE_TO_SELF, 0.0f,
+                Animation.RELATIVE_TO_SELF, 0.0f,
+                Animation.RELATIVE_TO_SELF, -100,
+                Animation.RELATIVE_TO_SELF, 0.0f
+        );
+        translate.setDuration(1000);
+        animation.addAnimation(translate);
+        alpha.setFillAfter(true);
+        alpha.setStartOffset(4000);
+        alpha.setDuration(500);
+        alpha.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                view.setVisibility(View.INVISIBLE);
+                view.clearAnimation();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        animation.addAnimation(alpha);
+        view.startAnimation(animation);
     }
 }

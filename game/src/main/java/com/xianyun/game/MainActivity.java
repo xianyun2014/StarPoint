@@ -21,7 +21,7 @@ public class MainActivity extends Activity{
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main_activity);
         
-        ctrl_view = ViewControl.GetViewControl(findViewById(R.id.main_game_layout));
+        ctrl_view = ViewControl.GetViewControl(findViewById(R.id.main_game_layout), mHandler);
         try{
         	GameData.readData(openFileInput("sava.sv"));
         }catch (Exception e){

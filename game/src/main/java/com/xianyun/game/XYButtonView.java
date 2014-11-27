@@ -76,7 +76,8 @@ public class XYButtonView extends ImageButton{
 				GameData.GetData().build_updata(v.getCurrentSelect());
 				break;
 			}
-            ViewControl.GetViewControl(null).UIupdata();
+            ViewControl.GetViewControl(null, null).PostUIupdata();
+            GameAchieve.GetAchieve().checkAchieve();
 		}
 		return true;
 	}

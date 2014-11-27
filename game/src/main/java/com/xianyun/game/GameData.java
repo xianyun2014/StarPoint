@@ -25,7 +25,8 @@ public class GameData implements java.io.Serializable{
 	private long click_yield;  //点击产量
 	private long click_total_yield; //点击总量
 	private long updata_num; //升级总次数
-	
+	private long achieve_num; //成就完成总数
+
 	private String[] build_name; //建筑名字
 	private String[] build_info; //建筑描述信息
 	private long [] build_cur_level; //建筑当前等级
@@ -76,11 +77,12 @@ public class GameData implements java.io.Serializable{
 		}
 		return gd;
 	}
-	public static boolean saveData(FileOutputStream fileout)
+	public static boolean saveData(FileOutputStream fileout) //数据保存
 	{
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(fileout);
 			out.writeObject(gd);
+            out.writeObject(GameAchieve.GetAchieve());
 			out.close();
 			fileout.close();
 			Log.e("game", "save success");
@@ -90,13 +92,15 @@ public class GameData implements java.io.Serializable{
 			return false;
 		}
 	}
-	public static boolean readData(FileInputStream filein)
+	public static boolean readData(FileInputStream filein)//数据读取
 	{
 		try{
 			ObjectInputStream in = new ObjectInputStream(filein);
 			gd = (GameData) in.readObject();
+            GameAchieve g = (GameAchieve) in.readObject();
 			in.close();
 			filein.close();
+            GameAchieve.ResetGameAchieve(g);
 			Log.e("game", "read success");
 			return true;
 		} catch (Exception e){
@@ -116,12 +120,15 @@ public class GameData implements java.io.Serializable{
 			build_total_yield[i] += build_sec_yield[i] * build_multiple[i];
 		}
 	}
-	public void add_click()
+	public void add_click() //增加一次点击产量
 	{
 		star += click_yield;
 		click_total_yield += click_yield;
 		++click_num;
 	}
+    public void add_one_achieve(){
+        achieve_num++;
+    }
 	public String get_game_day()
 	{
 		return StrPreOper(String.valueOf(game_day));
@@ -194,7 +201,10 @@ public class GameData implements java.io.Serializable{
 	{
 		return build_info[b.ordinal()];
 	}
-	public boolean build_can_updata(building b)
+	public String get_achieve_num(){
+        return StrPreOper(String.valueOf(achieve_num));
+    }
+    public boolean build_can_updata(building b)
 	{
 		return star >= build_updata_cost[b.ordinal()];
 	}

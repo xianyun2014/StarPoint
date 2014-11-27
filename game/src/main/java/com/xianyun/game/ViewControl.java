@@ -1,11 +1,15 @@
 package com.xianyun.game;
 
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 public class ViewControl {
 	private static ViewControl vc = null;
+    private Handler handler = null;
+
 	private SlidingLayout view_sliding;
 	private ViewStar_Frame view_star;
 	private ViewStar_Count view_count;
@@ -18,8 +22,10 @@ public class ViewControl {
     private boolean is_Show_Achieve = false;
     private String achieve_name, achieve_info;
 
-	private ViewControl(View v)
+	private ViewControl(View v, Handler hand)
 	{
+        handler = hand;
+
 		View va = (View) v.findViewById(R.id.layout_game_achieve_show);
 		view_achieve = ViewAchieve_Show.Get_ViewAchieve_Show(va);
 		
@@ -32,14 +38,18 @@ public class ViewControl {
         View vgsc = (View) v.findViewById(R.id.layout_game_star_count);
         view_count = ViewStar_Count.Get_View(vgsc);
 	}
-	public static ViewControl GetViewControl(View v)
+	public static ViewControl GetViewControl(View v, Handler hand)
 	{
 		if (null == vc)
 		{
-			vc = new ViewControl(v);
+			vc = new ViewControl(v, hand);
 		}
 		return vc;
 	}
+    public void PostUIupdata()//非主线程可以调用此函数更新
+    {
+        handler.sendMessage(handler.obtainMessage(0,""));
+    }
 	public void UIALLupdata()
 	{
 		view_count.UIupdata();
@@ -62,6 +72,7 @@ public class ViewControl {
 		}
         if (is_Show_Achieve){
             view_achieve.set_achieve(achieve_name, achieve_info);
+            is_Show_Achieve = false;
         }
 	}
 	public void StartViewAchieve(String name, String info)
@@ -69,5 +80,7 @@ public class ViewControl {
         achieve_name = name;
         achieve_info = info;
         is_Show_Achieve = true;
+        PostUIupdata();
+        Log.w("game", "start " + name);
 	}
 }
