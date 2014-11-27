@@ -1,10 +1,8 @@
 /*
- * ˫��˵�����
- * @author:  ����Ұ��
+ * @author:  闲云野鹤
  * @qq:      836663997
  * @blog:    blog.csdn.net/xianyun2009
  * @create:  2014-11-21
- * @�ο�                 ����csdnר��
  */
 
 package com.xianyun.game;
