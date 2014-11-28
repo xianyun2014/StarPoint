@@ -99,7 +99,6 @@
                     android:id="@+id/count_txt_total_star"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
                     android:textAppearance="@style/star_count_txt" />
 
             </TableRow>
@@ -120,7 +119,6 @@
                     android:id="@+id/count_txt_click_yield"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
                     android:textAppearance="@style/star_count_txt" />
 
             </TableRow>
@@ -180,57 +178,6 @@
             android:layout_height="wrap_content" >
 
             <TableRow
-                android:id="@+id/tableRow7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/textView14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="累计游戏天数："
-                    android:textAppearance="@style/star_count_txt" />
-
-                <TextView
-                    android:id="@+id/count_txt_game_day"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/star_count_txt" />
-
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="累计游戏时长："
-                    android:textAppearance="@style/star_count_txt" />
-
-                <TextView
-                    android:id="@+id/count_txt_game_hour"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/star_count_txt" />
-
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </TableRow>
-
-            <TableRow
                 android:id="@+id/tableRow10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
@@ -244,26 +191,6 @@
 
                 <TextView
                     android:id="@+id/count_txt_up_build"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/star_count_txt" />
-
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/textView20"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="升级科技次数："
-                    android:textAppearance="@style/star_count_txt" />
-
-                <TextView
-                    android:id="@+id/count_txt_up_technology"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/star_count_txt" />
@@ -290,25 +217,6 @@
 
             </TableRow>
 
-            <TableRow
-                android:id="@+id/tableRow13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/textView25"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="完成任务数量："
-                    android:textAppearance="@style/star_count_txt" />
-
-                <TextView
-                    android:id="@+id/count_txt_task"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/star_count_txt" />
-
-            </TableRow>
         </TableLayout>
 
     </TableLayout>

@@ -17,18 +17,17 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 public class SlidingLayout extends RelativeLayout {
-	private View leftLayout, contentLayout, rightLayout;
-	private int screenWidth, rightWidth = 120, leftWidth = 400;
+	private View leftLayout, contentLayout;
+	private int screenWidth, leftWidth = 400;
 	
 	private MarginLayoutParams leftLayoutParams;
 	private MarginLayoutParams contentLayoutParams;
-    private MarginLayoutParams rightLayoutParams;  
     //标记状态
-    private final int SHOW_LEFT = 0, HIDE_LEFT = 1, SHOW_RIGHT = 2, HIDE_RIGHT = 3, NULL_STATE = -1;
+    private final int SHOW_LEFT = 0, HIDE_LEFT = 1, NULL_STATE = -1;
     //状态
     private int STATE;
     //当前显示状态
-    private boolean isLeftShow = false, isRightShow = false, isContentShow = true, isSliding = false;
+    private boolean isLeftShow = false, isContentShow = true, isSliding = false;
     
     private float x_down, x_move, x_up;
     
@@ -57,21 +56,11 @@ public class SlidingLayout extends RelativeLayout {
             contentLayoutParams = (MarginLayoutParams) contentLayout.getLayoutParams();
             contentLayoutParams.width = screenWidth;
             contentLayout.setLayoutParams(contentLayoutParams);
-            
-            rightLayout = getChildAt(2);
-            rightLayoutParams = (MarginLayoutParams) rightLayout.getLayoutParams();
-            rightLayoutParams.width = rightWidth;
-            rightLayoutParams.rightMargin = -rightWidth;
-            rightLayout.setLayoutParams(rightLayoutParams);
         }
     }
 	public boolean isShowLeft()
 	{
 		return isLeftShow;
-	}
-	public boolean isShowRight()
-	{
-		return isRightShow;
 	}
 	public boolean isShowContent()
 	{
@@ -82,10 +71,7 @@ public class SlidingLayout extends RelativeLayout {
 	{
 		return isSliding && SHOW_LEFT == getState((int)(x_move - x_down));
 	}
-	public boolean isSlidingToRight()
-	{
-		return isSliding && SHOW_RIGHT == getState((int)(x_move - x_down));
-	}
+
 	//根据手势趋势获取状态
 	private int getState(int d)
 	{
@@ -93,14 +79,10 @@ public class SlidingLayout extends RelativeLayout {
 		{
 			if (isContentShow)
 				return SHOW_LEFT;
-			else if (isRightShow)
-				return HIDE_RIGHT;
 		}
 		else if (d < 0)
 		{
-			if (isContentShow)
-				return SHOW_RIGHT;
-			else if (isLeftShow)
+			if (isLeftShow)
 				return HIDE_LEFT;
 		}
 		return NULL_STATE;
@@ -124,13 +106,8 @@ public class SlidingLayout extends RelativeLayout {
 			case SHOW_LEFT:
 			case HIDE_LEFT:
 				setLeftWidth(DisX);
-				fixContent(true);
+				fixContent();
 
-				break;
-			case SHOW_RIGHT:
-			case HIDE_RIGHT:
-				setRightWidth(DisX);
-				fixContent(false);
 				break;
 			}
 			
@@ -151,18 +128,6 @@ public class SlidingLayout extends RelativeLayout {
 					hideLeft();
 				else
 					showLeft();
-				break;
-			case SHOW_RIGHT:
-				if (shouldShowRight())
-					showRight();
-				else
-					hideRight();
-				break;
-			case HIDE_RIGHT:
-				if (shouldHideRight())
-					hideRight();
-				else
-					showRight();
 				break;
 			}
 			recycleTracker();
@@ -200,32 +165,8 @@ public class SlidingLayout extends RelativeLayout {
 	{
 		return getVelocity() > VELOCITY_MIN || x_down - x_up > leftWidth / 2;
 	}
-	private boolean shouldShowRight()
-	{
-		return getVelocity() > VELOCITY_MIN || x_down - x_up > rightWidth / 2;
-	}
-	private boolean shouldHideRight()
-	{
-		return getVelocity() > VELOCITY_MIN || x_up - x_down > rightWidth / 2;
-	}
-	
+
 	//设置左侧边应该显示的长度，正负表示拉出与收缩
-	private boolean setRightWidth(int w)
-	{
-		if (w > 0)
-			rightLayoutParams.rightMargin = -w;
-		else
-			rightLayoutParams.rightMargin = -(rightWidth + w);
-		
-		if (rightLayoutParams.rightMargin < -rightWidth)
-			rightLayoutParams.rightMargin = -rightWidth;
-		else if (rightLayoutParams.rightMargin > 0)
-			rightLayoutParams.rightMargin = 0;
-		rightLayout.setLayoutParams(rightLayoutParams);
-		
-		return rightLayoutParams.rightMargin == 0 || rightLayoutParams.rightMargin == rightWidth;
-	}
-	//设置右侧边应该显示的长度，正负表示拉出与收缩
 	private boolean setLeftWidth(int w)
 	{
 		if (w > 0)
@@ -241,27 +182,19 @@ public class SlidingLayout extends RelativeLayout {
 		
 		return leftLayoutParams.leftMargin == 0 || leftLayoutParams.leftMargin == leftWidth;
 	}
-	//修正内容界面的宽度，isLeft决定是否依靠左侧边修正
-	private void fixContent(boolean isLeft)
+	//修正内容界面的宽度
+	private void fixContent()
 	{
-		if (isLeft){
-			contentLayoutParams.leftMargin = leftLayoutParams.leftMargin + leftWidth;
-			contentLayoutParams.rightMargin = -contentLayoutParams.leftMargin;
-		}
-		else {
-			contentLayoutParams.rightMargin = rightLayoutParams.rightMargin + rightWidth;
-        	contentLayoutParams.leftMargin = -contentLayoutParams.rightMargin;
-		}
+		contentLayoutParams.leftMargin = leftLayoutParams.leftMargin + leftWidth;
+        contentLayoutParams.rightMargin = -contentLayoutParams.leftMargin;
     	contentLayout.setLayoutParams(contentLayoutParams);
 	}
 	//显示内容面板
 	public void showContent()
 	{
 		new ScrollTaskLeft().execute(-1000);
-		new ScrollTaskRight().execute(-1000);
 		isContentShow = true;
 		isLeftShow = false;
-		isRightShow = false;
 	}
 	public void showLeft()
 	{
@@ -275,18 +208,7 @@ public class SlidingLayout extends RelativeLayout {
 		isLeftShow = false;
 		isContentShow = true;
 	}
-	public void showRight()
-	{
-		new ScrollTaskRight().execute(30);
-		isRightShow = true;
-		isContentShow = false;
-	}
-	public void hideRight()
-	{
-		new ScrollTaskRight().execute(-30);
-		isRightShow = false;
-		isContentShow = true;
-	}
+
 	//左侧边滑动动画
 	class ScrollTaskLeft extends AsyncTask<Integer, Integer, Integer> {
         @Override
@@ -323,42 +245,7 @@ public class SlidingLayout extends RelativeLayout {
         protected void onProgressUpdate(Integer... leftMargin) {
         	leftLayoutParams.leftMargin = leftMargin[0];
         	leftLayout.setLayoutParams(leftLayoutParams);
-        	fixContent(true);
-        }
-    }
-	//右侧边滑动动画
-	class ScrollTaskRight extends AsyncTask<Integer, Integer, Integer> {
-        @Override  
-        protected Integer doInBackground(Integer... speed) {
-            int rightMargin = rightLayoutParams.rightMargin;
-            
-            while (true) {
-            	rightMargin += speed[0];
-            	if (speed[0] > 0){
-            		if (rightMargin > 0){
-            			rightMargin = 0;
-            			break;
-            		}
-            	}
-            	else {
-            		if (rightMargin < -rightWidth){
-	                	rightMargin = -rightWidth;
-	                    break;
-            		}
-				}
-            	publishProgress(rightMargin);
-                try {
-                    Thread.sleep(20);
-                } catch (InterruptedException e) { }
-            }
-            publishProgress(rightMargin);
-            return rightMargin;
-        }
-        @Override
-        protected void onProgressUpdate(Integer... rightMargin) {
-        	rightLayoutParams.rightMargin = rightMargin[0];
-        	rightLayout.setLayoutParams(rightLayoutParams);
-        	fixContent(false);
+        	fixContent();
         }
     }
 }

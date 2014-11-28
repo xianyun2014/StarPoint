@@ -1,0 +1,91 @@
+Manifest-Version: 1.0
+Built-By: 0.12.2
+Created-By: Android Gradle 0.12.2
+
+Name: res/drawable-mdpi-v4/jz_mfw.png
+SHA1-Digest: 1fA/pFLPIXnIORRU1gs7Fhgjf5M=
+
+Name: AndroidManifest.xml
+SHA1-Digest: h49CcaSgBArqPv4ZQ/t9VcwznX4=
+
+Name: res/drawable-mdpi-v4/jz_moon.png
+SHA1-Digest: xBMQ9kDLHhBRnooX/oVP/zeuQcw=
+
+Name: res/drawable-hdpi-v4/ic_launcher.png
+SHA1-Digest: cgfE/uwTdwNJtPtX4cTDRoV51cc=
+
+Name: res/drawable-mdpi-v4/star.png
+SHA1-Digest: Fa3MR9tgHmPj43lq3ZIMYhNMaPA=
+
+Name: res/drawable-mdpi-v4/ic_launcher.png
+SHA1-Digest: gg7YINwjfZmgUjln+bj4dS21wRY=
+
+Name: res/drawable-mdpi-v4/back.png
+SHA1-Digest: VHWIl2iI2C1pCr7Tipshoi9Si8c=
+
+Name: res/drawable-mdpi-v4/jz_xxmgc.png
+SHA1-Digest: FIpqhFQa6GUppGlGqGFGbuOPJ/I=
+
+Name: res/drawable-mdpi-v4/jz_zxgd.png
+SHA1-Digest: aEIHcgGui+GFmPbbSiqp3+ttRY0=
+
+Name: res/layout/activity_start.xml
+SHA1-Digest: uE/AQitloZ/+R/uFnoooEgtsVsQ=
+
+Name: res/drawable-xxhdpi-v4/ic_launcher.png
+SHA1-Digest: 6L9qtOCV4zN1gLHQL2c7slqyWLQ=
+
+Name: res/drawable-mdpi-v4/jz_xkzm.png
+SHA1-Digest: FyJ8kVjIWQx4Oj368FmnJTWeDfQ=
+
+Name: res/layout/game_frame_star_updatawnd.xml
+SHA1-Digest: Tftj0BxIL7QP0kHkNP3AqsnXd5k=
+
+Name: res/drawable-mdpi-v4/jz_dapao.png
+SHA1-Digest: YYkq72mphQXpSnA5YHvYG38OaOk=
+
+Name: res/layout/main_activity.xml
+SHA1-Digest: rIJsOjVaeiwCfAgRaKQO0fe/H8A=
+
+Name: res/drawable-mdpi-v4/updata.png
+SHA1-Digest: ctyy0ysIFtdW66DhBi9wIYakzvg=
+
+Name: res/drawable-xhdpi-v4/ic_launcher.png
+SHA1-Digest: LgRpJ6Y0PK+lkCp3PycqEwSYhj8=
+
+Name: res/layout/game_frame_star_count.xml
+SHA1-Digest: pGkIM4uFEMSNo679CUdz71I5sDw=
+
+Name: res/drawable-mdpi-v4/jz_xzdf.png
+SHA1-Digest: Ate6FGnRQNRM0jBYd++cz/NEHUU=
+
+Name: res/layout/game_frame_star.xml
+SHA1-Digest: 4iGuuaEoen55iXXJRBRTa269SLE=
+
+Name: res/drawable-mdpi-v4/jz_sksd.png
+SHA1-Digest: r+ChAJw0qt03lp3hfZKhNztfatE=
+
+Name: res/drawable-mdpi-v4/close.png
+SHA1-Digest: LYFAJtADTBRPZrj3H2znEYqO/rE=
+
+Name: res/layout/game_frame_fight.xml
+SHA1-Digest: l1SsU+soOoDI9/vIz7FZ9G+bYXY=
+
+Name: res/layout/game_view_achieve_show.xml
+SHA1-Digest: 8MR/uUFsooe1YnmLxKLXZjVFpzY=
+
+Name: resources.arsc
+SHA1-Digest: 7zcnIpsRL5+UyaqUJVgazl9+s1k=
+
+Name: classes.dex
+SHA1-Digest: TMsRxidKW3FJs9dwj8P3XM8UBhA=
+
+Name: res/drawable-mdpi-v4/jz_mz.png
+SHA1-Digest: IXY95oJqfHvWpGkjYeU1aG3EVBE=
+
+Name: res/drawable-mdpi-v4/info_build.png
+SHA1-Digest: 7M8Ts4aIAV7BYT75LqhjwqEsmfA=
+
+Name: res/drawable-mdpi-v4/jz_wmyt.png
+SHA1-Digest: GW+nODlxXN7tmu0dnlDY+L51GNE=
+

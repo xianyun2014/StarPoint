@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ff000000"
+    tools:context="com.xianyun.game.StartActivity">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="闲云出品" android:textColor="#ff1cff06" android:textSize="50dp"
+            android:id="@+id/textView3"
+            android:layout_marginBottom="142dp" android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="星点战V1.0"
+            android:id="@+id/textView2"
+            android:textSize="55dp"
+            android:textColor="#ff04ff5e"
+            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp" android:textStyle="bold"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="QQ:836663997"
+            android:id="@+id/textView4"
+            android:textColor="#ff00ff1a" android:textSize="30dp" android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/textView3" android:layout_alignEnd="@+id/textView3"
+            android:layout_marginBottom="69dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收集亿万星点，坐拥宇宙最强"
+            android:id="@+id/textView5"
+            android:textSize="20dp" android:textColor="#ffff00d0" android:layout_below="@+id/textView2"
+            android:layout_centerHorizontal="true" android:layout_marginTop="40dp"/>
+</RelativeLayout>

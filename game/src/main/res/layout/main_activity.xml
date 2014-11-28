@@ -20,37 +20,6 @@
         android:layout_weight="10"
         layout="@layout/game_frame_star" />
 
-    <RelativeLayout
-        android:layout_width="120dp"
-        android:layout_height="fill_parent"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="0dp"
-        android:background="#ff000000" >
-
-        <com.xianyun.game.XYButtonView
-            android:id="@+id/buildButtonView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/jz_zxgd" />
-
-        <com.xianyun.game.XYButtonView
-            android:id="@+id/buildButtonView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/buildButtonView2"
-            android:src="@drawable/jz_xkzm" />
-
-        <com.xianyun.game.XYButtonView
-            android:id="@+id/buildButtonView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:src="@drawable/jz_xxmgc" />
-
-    </RelativeLayout>
-
     <include
             android:id="@+id/layout_game_achieve_show"
             layout="@layout/game_view_achieve_show" />

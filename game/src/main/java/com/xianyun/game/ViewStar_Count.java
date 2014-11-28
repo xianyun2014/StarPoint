@@ -13,12 +13,8 @@ public class ViewStar_Count {
 	private TextView txt_click_yield;
 	private TextView txt_click_num;
 	private TextView txt_click_star;
-	private TextView txt_game_day;
-	private TextView txt_game_hour;
 	private TextView txt_up_build;
-	private TextView txt_up_technology;
 	private TextView txt_achieve;
-	private TextView txt_task;
 
 	private ViewStar_Count(View v)
 	{
@@ -29,12 +25,8 @@ public class ViewStar_Count {
 		txt_click_yield = (TextView) v.findViewById(R.id.count_txt_click_yield);
 		txt_click_num = (TextView) v.findViewById(R.id.count_txt_click_num);
 		txt_click_star = (TextView) v.findViewById(R.id.count_txt_click_star);
-		txt_game_day = (TextView) v.findViewById(R.id.count_txt_game_day);
-		txt_game_hour = (TextView) v.findViewById(R.id.count_txt_game_hour);
 		txt_up_build = (TextView) v.findViewById(R.id.count_txt_up_build);
-		txt_up_technology = (TextView) v.findViewById(R.id.count_txt_up_technology);
 		txt_achieve = (TextView) v.findViewById(R.id.count_txt_achieve);
-		txt_task = (TextView) v.findViewById(R.id.count_txt_task);
 	}
 	public static ViewStar_Count Get_View(View fv)
 	{
@@ -53,8 +45,6 @@ public class ViewStar_Count {
 		txt_click_yield.setText(GameData.GetData().get_click_yield());
 		txt_click_num.setText(GameData.GetData().get_click_num());
 		txt_click_star.setText(GameData.GetData().get_click_total());
-		txt_game_day.setText(GameData.GetData().get_game_day());
-		txt_game_hour.setText(GameData.GetData().get_game_hour());
 		txt_up_build.setText(GameData.GetData().get_updata_num());
         txt_achieve.setText(GameData.GetData().get_achieve_num());
 	}

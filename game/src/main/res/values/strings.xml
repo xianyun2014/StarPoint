@@ -3,5 +3,8 @@
 
     <string name="app_name">星点战</string>
     <string name="cur_star">当前拥有星点</string>
+    <string name="title_activity_start">StartActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>

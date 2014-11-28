@@ -27,7 +27,7 @@ public class MainActivity extends Activity{
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main_activity);
-        
+
         ctrl_view = ViewControl.GetViewControl(findViewById(R.id.main_game_layout), mHandler);
         try{
         	GameData.readData(openFileInput("sava.sv"));
